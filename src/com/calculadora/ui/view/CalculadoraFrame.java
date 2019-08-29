@@ -1,5 +1,7 @@
 package com.calculadora.ui.view;
 
+import com.calculadora.ui.controller.interfaces.CalculadoraListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -38,128 +40,64 @@ public class CalculadoraFrame extends JFrame {
         return button1;
     }
 
-    public void setButton1(JButton button1) {
-        this.button1 = button1;
-    }
-
     public JButton getButton0() {
         return button0;
-    }
-
-    public void setButton0(JButton button0) {
-        this.button0 = button0;
     }
 
     public JButton getButton2() {
         return button2;
     }
 
-    public void setButton2(JButton button2) {
-        this.button2 = button2;
-    }
-
     public JButton getButton3() {
         return button3;
-    }
-
-    public void setButton3(JButton button3) {
-        this.button3 = button3;
     }
 
     public JButton getButton4() {
         return button4;
     }
 
-    public void setButton4(JButton button4) {
-        this.button4 = button4;
-    }
-
     public JButton getButton5() {
         return button5;
-    }
-
-    public void setButton5(JButton button5) {
-        this.button5 = button5;
     }
 
     public JButton getButton6() {
         return button6;
     }
 
-    public void setButton6(JButton button6) {
-        this.button6 = button6;
-    }
-
     public JButton getButton7() {
         return button7;
-    }
-
-    public void setButton7(JButton button7) {
-        this.button7 = button7;
     }
 
     public JButton getButton8() {
         return button8;
     }
 
-    public void setButton8(JButton button8) {
-        this.button8 = button8;
-    }
-
     public JButton getButton9() {
         return button9;
-    }
-
-    public void setButton9(JButton button9) {
-        this.button9 = button9;
     }
 
     public JButton getButtonDivision() {
         return buttonDivision;
     }
 
-    public void setButtonDivision(JButton buttonDivision) {
-        this.buttonDivision = buttonDivision;
-    }
-
     public JButton getButtonMultiplication() {
         return buttonMultiplication;
-    }
-
-    public void setButtonMultiplication(JButton buttonMultiplication) {
-        this.buttonMultiplication = buttonMultiplication;
     }
 
     public JButton getButtonSubtraction() {
         return buttonSubtraction;
     }
 
-    public void setButtonSubtraction(JButton buttonSubtraction) {
-        this.buttonSubtraction = buttonSubtraction;
-    }
-
     public JButton getButtonAddition() {
         return buttonAddition;
-    }
-
-    public void setButtonAddition(JButton buttonAddition) {
-        this.buttonAddition = buttonAddition;
     }
 
     public JButton getButtonResult() {
         return buttonResult;
     }
 
-    public void setButtonResult(JButton buttonResult) {
-        this.buttonResult = buttonResult;
-    }
-
     public JTextField getVisorTextFiel() {
         return visorTextFiel;
-    }
-
-    public void setVisorTextFiel(JTextField visorTextFiel) {
-        this.visorTextFiel = visorTextFiel;
     }
 
     {

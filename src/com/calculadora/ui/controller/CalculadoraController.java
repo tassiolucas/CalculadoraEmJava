@@ -1,9 +1,11 @@
 package com.calculadora.ui.controller;
 
+import com.calculadora.ui.model.CalculadoraManager;
 import com.calculadora.ui.view.CalculadoraFrame;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.calculadora.ui.controller.interfaces.CalculadoraListener;
 
 public class CalculadoraController {
 
@@ -23,11 +25,19 @@ public class CalculadoraController {
     private JButton buttonSubtraction;
     private JButton buttonAddition;
     private JButton buttonResult;
-    private JTextField visorTextFiel;
+    private JTextField visorTextField;
+
+    private CalculadoraListener calculadoraListener;
+
+    private CalculadoraManager calculadoraManager;
 
     public CalculadoraController() {
         initComponents();
         initListeners();
+
+        calculadoraManager = new CalculadoraManager();
+
+        this.calculadoraListener = entrada -> visorTextField.setText(calculadoraManager.makeACount(entrada));
     }
 
     public void showCalculadoraFrameWindow() {
@@ -36,6 +46,7 @@ public class CalculadoraController {
 
     private void initComponents() {
         calculadoraFrame = new CalculadoraFrame();
+
         button0 = calculadoraFrame.getButton0();
         button1 = calculadoraFrame.getButton1();
         button2 = calculadoraFrame.getButton2();
@@ -51,120 +62,54 @@ public class CalculadoraController {
         buttonSubtraction = calculadoraFrame.getButtonSubtraction();
         buttonAddition = calculadoraFrame.getButtonAddition();
         buttonResult = calculadoraFrame.getButtonResult();
-        visorTextFiel = calculadoraFrame.getVisorTextFiel();
+        visorTextField = calculadoraFrame.getVisorTextFiel();
     }
 
     private void initListeners() {
-        button0.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '0');
+        button0.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '0'));
+
+        button1.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '1'));
+
+        button2.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '2'));
+
+        button3.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '3'));
+
+        button4.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '4'));
+
+        button5.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '5'));
+
+        button6.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '6'));
+
+        button7.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '7'));
+
+        button8.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '8'));
+
+        button9.addActionListener(e -> visorTextField.setText(visorTextField.getText() + '9'));
+
+        buttonAddition.addActionListener(e -> {
+            if (!visorTextField.getText().equals("")) {
+                visorTextField.setText(visorTextField.getText() + '+');
             }
         });
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '1');
+        buttonDivision.addActionListener(e -> {
+            if (!visorTextField.getText().equals("")) {
+                visorTextField.setText(visorTextField.getText() + '/');
             }
         });
 
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '2');
+        buttonMultiplication.addActionListener(e -> {
+            if (!visorTextField.getText().equals("")) {
+                visorTextField.setText(visorTextField.getText() + '*');
             }
         });
 
-        button3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '3');
+        buttonSubtraction.addActionListener(e -> {
+            if (!visorTextField.getText().equals("")) {
+                visorTextField.setText(visorTextField.getText() + '-');
             }
         });
 
-        button4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '4');
-            }
-        });
-
-        button5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '5');
-            }
-        });
-
-        button6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '6');
-            }
-        });
-
-        button7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '7');
-            }
-        });
-
-        button8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '8');
-            }
-        });
-
-        button9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '9');
-            }
-        });
-
-        button0.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '0');
-            }
-        });
-
-        buttonAddition.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '+');
-            }
-        });
-
-        buttonDivision.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '/');
-            }
-        });
-
-        buttonMultiplication.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '*');
-            }
-        });
-
-        buttonSubtraction.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '-');
-            }
-        });
-
-        buttonResult.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                visorTextFiel.setText(visorTextFiel.getText() + '=');
-            }
-        });
+        buttonResult.addActionListener(e -> calculadoraListener.insertEntry(visorTextField.getText()));
     }
 }

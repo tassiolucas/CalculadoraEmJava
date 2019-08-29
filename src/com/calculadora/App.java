@@ -1,8 +1,6 @@
 package com.calculadora;
 
 import com.calculadora.ui.controller.CalculadoraController;
-import com.calculadora.ui.view.CalculadoraFrame;
-import javax.swing.*;
 
 public class App {
 
