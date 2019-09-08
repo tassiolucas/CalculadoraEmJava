@@ -1,6 +1,7 @@
 package com.calculadora.ui.model;
 
 import com.calculadora.ui.controller.CalculadoraController;
+import java.text.DecimalFormat;
 
 public class CalculadoraManager {
 
@@ -45,10 +46,21 @@ public class CalculadoraManager {
             }
         }
 
-        return resultado.toString();
+        return toVisor(resultado);
     }
 
     private Float toFloat(String text) {
         try { return Float.valueOf(text); } catch (Exception e) { return 0F; }
+    }
+
+    public String toVisor(Float resultado) {
+        DecimalFormat numberResult;
+        if ((resultado == Math.floor(resultado)) && !Double.isInfinite(resultado)) {
+            numberResult = new DecimalFormat("#,##0");
+        } else {
+            numberResult = new DecimalFormat("#,##0.00");
+        }
+        String numberAsString = numberResult.format(resultado);
+        return numberAsString;
     }
 }

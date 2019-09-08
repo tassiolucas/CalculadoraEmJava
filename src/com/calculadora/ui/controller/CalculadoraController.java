@@ -3,8 +3,8 @@ package com.calculadora.ui.controller;
 import com.calculadora.ui.model.CalculadoraManager;
 import com.calculadora.ui.view.CalculadoraFrame;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+
 import com.calculadora.ui.controller.interfaces.CalculadoraListener;
 
 public class CalculadoraController {
@@ -37,7 +37,9 @@ public class CalculadoraController {
 
         calculadoraManager = new CalculadoraManager();
 
-        this.calculadoraListener = entrada -> visorTextField.setText(calculadoraManager.makeACount(entrada));
+        this.calculadoraListener = entrada -> visorTextField.setText(
+                calculadoraManager.makeACount(entrada)
+        );
     }
 
     public void showCalculadoraFrameWindow() {
@@ -111,5 +113,36 @@ public class CalculadoraController {
         });
 
         buttonResult.addActionListener(e -> calculadoraListener.insertEntry(visorTextField.getText()));
+
+        visorTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent event) {
+                char caracter = event.getKeyChar();
+                if (caracter == KeyEvent.VK_BACK_SPACE ||
+                    caracter == KeyEvent.VK_DELETE) {
+                    visorTextField.setText("");
+                } else if (caracter == '=' || caracter == '\n') {
+                    buttonResult.doClick();
+                    event.consume();
+                } else if (caracter != '+' &&
+                           caracter != '-' &&
+                        caracter != '/' &&
+                        caracter != '*' &&
+                        !Character.isDigit(caracter)) {
+                    event.consume();
+                }
+                super.keyTyped(event);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+            }
+        });
     }
 }
